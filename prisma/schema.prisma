@@ -1,0 +1,48 @@
+generator client {
+  provider      = "prisma-client-js"
+  output        = "../node_modules/.prisma/client"
+  binaryTargets = ["native"]
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        Int       @id @default(autoincrement())
+  createdAt DateTime  @default(now())
+  email     String    @unique
+  name      String?
+  role      Role      @default(USER)
+  posts     Post[]
+  comments  Comment[]
+}
+
+model Post {
+  id        Int       @id @default(autoincrement())
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+  published Boolean   @default(false)
+  title     String    @db.VarChar(255)
+  content   String    @db.Text
+  author    User?     @relation(fields: [authorId], references: [id])
+  comments  Comment[]
+  authorId  Int?
+}
+
+model Comment {
+  id        Int      @id @default(autoincrement())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  content   String   @db.Text
+  author    User?    @relation(fields: [authorId], references: [id])
+  post      Post?    @relation(fields: [postId], references: [id])
+  authorId  Int?
+  postId    Int?
+}
+
+enum Role {
+  USER
+  ADMIN
+}
