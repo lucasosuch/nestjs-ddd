@@ -1,4 +1,4 @@
-# NestJs Clean Arquitecture with DDD (Domain-Driven Design)
+# NestJs Clean Architecture with DDD (Domain-Driven Design)
 
 ## Architecture overview
 
