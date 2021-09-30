@@ -1,3 +1,1 @@
-export class GetAllPostsQuery {
-  constructor() {}
-}
+export class GetAllPostsQuery {}
