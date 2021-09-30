@@ -1,7 +1,7 @@
 import { IQueryHandler, QueryHandler } from '@nestjs/cqrs';
 import { ForbiddenException, Inject, NotImplementedException } from '@nestjs/common';
-import { PostRepository } from '../../Domain/Repository/PostRepository';
-import { GetSinglePostQuery } from '../../Domain/Queries/GetSinglePostQuery';
+import { PostRepository } from '~/Articles/Domain/Repository/PostRepository';
+import { GetSinglePostQuery } from '~/Articles/Domain/Queries/GetSinglePostQuery';
 
 @QueryHandler(GetSinglePostQuery)
 export class GetSinglePostHandler implements IQueryHandler<GetSinglePostQuery> {

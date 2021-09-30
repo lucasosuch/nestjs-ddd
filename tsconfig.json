@@ -13,7 +13,8 @@
     "baseUrl": "./src",
     "incremental": true,
     "paths": {
-      "~/Shared/*": ["Shared/*"]
+      "~/Shared/*": ["Shared/*"],
+      "~/Articles/*": ["Articles/*"]
     },
     "typeRoots": ["node_modules/@types"],
     "types": ["@types/jest"]

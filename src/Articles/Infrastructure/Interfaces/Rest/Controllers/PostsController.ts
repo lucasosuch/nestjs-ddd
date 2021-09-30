@@ -1,6 +1,6 @@
 import { Controller, Get, Param, UseFilters } from '@nestjs/common';
 import { QueryBus } from '@nestjs/cqrs';
-import { GetAllPostsQuery, GetSinglePostQuery } from 'Articles/Domain/Queries';
+import { GetAllPostsQuery, GetSinglePostQuery } from '~/Articles/Domain/Queries';
 import { SearchForPostDTO } from '../DTO/SearchForPostDTO';
 
 @Controller('posts')

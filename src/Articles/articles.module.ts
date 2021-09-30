@@ -1,12 +1,12 @@
-import { CacheModule, Module } from '@nestjs/common';
+import { Module } from '@nestjs/common';
 import { CqrsModule } from '@nestjs/cqrs';
-import { Controllers } from './Infrastructure/Interfaces/Rest/Controllers';
-import { Repositories } from './Infrastructure/Repository';
-import { QueryHandlers } from './Application/Queries';
+import { Controllers } from '~/Articles/Infrastructure/Interfaces/Rest/Controllers';
+import { Repositories } from '~/Articles/Infrastructure/Repository';
+import { QueryHandlers } from '~/Articles/Application/Queries';
 import { Prisma } from '~/Shared/Infrastructure/Database/Prisma';
 
 @Module({
-  imports: [CqrsModule, CacheModule.register()],
+  imports: [CqrsModule],
   controllers: Controllers,
   providers: [...Repositories, ...QueryHandlers, Prisma],
 })

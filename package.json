@@ -15,18 +15,17 @@
     "prod": "node dist/main",
     "lint": "eslint \"{src,apps,libs,test}/**/*.ts\" --fix --quiet",
     "type-check": "tsc --pretty --noEmit",
-    "docker:up": "docker-compose up -d",
-    "docker:down": "docker-compose down",
-    "migrate:init": "dotenv -e .env.test -- yarn prisma migrate dev --name init",
-    "migrate:seed": "dotenv -e .env.test -- yarn prisma db seed --preview-feature",
-    "test": "dotenv -e .env.test -- jest",
+    "migrate:init": "yarn prisma migrate dev",
+    "migrate:reset": "yarn prisma migrate reset",
+    "migrate:seed": "yarn prisma db seed",
+    "test": "jest",
     "test:watch": "jest --watch",
     "test:cov": "jest --coverage",
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
     "test:e2e": "jest --config ./test/jest-e2e.json"
   },
   "prisma": {
-    "seed": "dotenv -e .env.test -- ts-node prisma/seed.ts"
+    "seed": "ts-node prisma/seed.ts"
   },
   "dependencies": {
     "@nestjs/common": "^7.6.15",
@@ -38,6 +37,7 @@
     "cli-color": "^2.0.0",
     "cookie-parser": "^1.4.5",
     "express": "^4.17.1",
+    "faker": "^5.5.3",
     "reflect-metadata": "^0.1.13",
     "rimraf": "^3.0.2",
     "rxjs": "^6.6.6"
@@ -81,7 +81,8 @@
       "**/*.(t|j)s"
     ],
     "moduleNameMapper": {
-      "~/Shared/([^\\.]*)$": "<rootDir>/Shared/$1"
+      "~/Shared/([^\\.]*)$": "<rootDir>/Shared/$1",
+      "~/Articles/([^\\.]*)$": "<rootDir>/Articles/$1"
     },
     "coverageDirectory": "../coverage",
     "testEnvironment": "node"
